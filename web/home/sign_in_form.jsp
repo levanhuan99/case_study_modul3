@@ -8,7 +8,7 @@
 <form method="post">
     <table border="1 solid">
         <tr>
-            <td>account name:<input type="text"name="account" placeholder="account name"></td>
+            <td>account name:<input type="text"name="userName" placeholder="account name"></td>
         </tr>
         <tr>
             <td>password :<input type="text" name="password" placeholder="password"></td>

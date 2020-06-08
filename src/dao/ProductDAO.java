@@ -10,10 +10,6 @@ import java.util.List;
 
 public class ProductDAO implements IProductDAO {
 
-//    private Connection connection;
-//    private String url = "jdbc:mysql://localhost:3306/case_study";
-//    private String account = "root";
-//    private String password = "123456";
     private DBConnection dbconnection;
 
     private static final String SELECT_ALL_PRODUCTS="select * from product";
@@ -23,20 +19,6 @@ public class ProductDAO implements IProductDAO {
         this.dbconnection=dbConnection;
 
     }
-
-//    protected Connection getConnection() {
-//        if (connection == null) {
-//            try {
-//                Class.forName("com.mysql.cj.jdbc.Driver");
-//                connection = DriverManager.getConnection(url, account, password);
-//
-//            } catch (ClassNotFoundException | SQLException e) {
-//                e.printStackTrace();
-//            }
-//
-//        }
-//        return connection;
-//    }
 
     @Override
     public List<Product> getAllProduct() {

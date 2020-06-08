@@ -1,16 +1,19 @@
 package model;
 
 public class User {
+    private int id;
     private String account;
     private String password;
 
     private String email;
     private String phone;
 
-    public User(String account, String password, String email, String phone) {
+
+
+    public User(int id, String account, String password, String email, String phone) {
+        this.id = id;
         this.account = account;
         this.password = password;
-
         this.email = email;
         this.phone = phone;
     }
@@ -46,5 +49,13 @@ public class User {
 
     public void setPhone(String phone) {
         this.phone = phone;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }
