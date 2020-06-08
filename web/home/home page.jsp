@@ -8,7 +8,8 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
           integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <link rel="stylesheet" href="css.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/all.min.css" integrity="sha256-46r060N2LrChLLb5zowXQ72/iKKNiw/lAmygmHExk/o=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/all.min.css"
+          integrity="sha256-46r060N2LrChLLb5zowXQ72/iKKNiw/lAmygmHExk/o=" crossorigin="anonymous"/>
 </head>
 <body>
 <div class="container">
@@ -29,7 +30,8 @@
                         <a class="nav-link" href="#">Giảm giá</a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Sản phẩm các loại</a>
+                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button"
+                           aria-haspopup="true" aria-expanded="false">Sản phẩm các loại</a>
                         <div class="dropdown-menu">
                             <a class="dropdown-item" href="#one">one</a>
                             <a class="dropdown-item" href="#two">two</a>
@@ -44,11 +46,12 @@
                 <form class="form-inline my-2 my-lg-0">
                     <input class="form-control mr-sm-2" type="search" placeholder="Tìm Kiếm" aria-label="Search">
                     <button class="btn btn-outline-success my-2 my-sm-0" type="submit"
-                            style="color: white ;border: black">Tìm Kiếm
-                    </button>
+                            style="color: white ;border: black">Tìm Kiếm</button>
                 </form>
-                <button type="button" class="btn btn-success">Đăng nhập</button>
-                <button type="button" class="btn btn-success">Đăng ký</button>
+                <%--                <button type="button" class="btn btn-success">Đăng nhập</button>--%>
+                <%--                <button type="button" class="btn btn-success">Đăng ký</button>--%>
+                <a href="/sign_in?action=sign_in" style="color:black ">Đăng nhập</a>
+                <a href="/sign_up?action=sign_up" style="color:black ">Đăng ký</a>
             </div>
         </nav>
     </div>
@@ -57,84 +60,26 @@
     <!--    phần thân hình ảnh-->
     <div class="row">
         <div class="col-sm-9">
-            <div class="card-group">
-                <div class="card">
-                    <img class="card-img-top" src="download 1.jpg" alt="Card image cap">
-                    <div class="card-body">
-                        <p>Rau húng chó phù hợp cho ăn sống .Thường được sử dụng để ăn với thịt vịt ngan... rất thơm</p>
-                        <button type="button" class="btn btn-success">Đặt hàng</button>
+            <div class="row">
+                <c:forEach items='${requestScope["products"]}' var="product">
+                    <div class="card-group col-sm-4">
+                        <div class="card">
+                            <img class="card-img-top" src="${product.getImage()}" alt="Card image cap">
+                            <div class="card-body">
+                                <p>${product.getName()}</p><br>
+                                <p>${product.getPrice()}</p><br>
+                                <button type="button" class="btn btn-success">Đặt hàng</button>
+                            </div>
+                        </div>
                     </div>
-                </div>
-                <div class="card">
-                    <img class="card-img-top" src="download 2.jpg" alt="Card image cap">
-                    <div class="card-body">
-                        <p>Rau tía tô thường được sử dụng để ăn sống ,có thể dùng để nấu đậu hoặ 1 số loại canh khác...</p>
-                        <button type="button" class="btn btn-success">Đặt hàng</button>
-                    </div>
-                </div>
-                <div class="card">
-                    <img class="card-img-top" src="download 3.jpg" alt="Card image cap">
-                    <div class="card-body">
-                        <p>Rau canh giới thường được sử dụng để ăn sống,rất mát và thơm phù hợp cho ngày hè nóng lực</p>
-                        <button type="button" class="btn btn-success">Đặt hàng</button>
-
-                    </div>
-                </div>
-            </div>
-            <div class="card-group">
-                <div class="card">
-                    <img class="card-img-top" src="download 4.jpg" alt="Card image cap">
-                    <div class="card-body">
-                        <p>Rau dăm thường sử dụng để ăn với trứng vịt lộn hoặc để làm rau gia vị để nấu canh có vị hơi cay rất đặc trưng</p>
-                        <button type="button" class="btn btn-success">Đặt hàng</button>
-                    </div>
-                </div>
-                <div class="card">
-                    <img class="card-img-top" src="download 5.jpg" alt="Card image cap">
-                    <div class="card-body">
-                        <p>Rau ngót dùng để nấu canh vị rất mát và thanh rất vitamin C</p>
-                        <button type="button" class="btn btn-success">Đặt hàng</button>
-                    </div>
-                </div>
-                <div class="card">
-                    <img class="card-img-top" src="download 6.jpg" alt="Card image cap">
-                    <div class="card-body">
-                        <p>Rau thơm vị bạc hà mát lạnh sảng khoái</p>
-                        <button type="button" class="btn btn-success">Đặt hàng</button>
-
-                    </div>
-                </div>
-            </div>
-            <div class="card-group">
-                <div class="card">
-                    <img class="card-img-top" src="download 7.jpg" alt="Card image cap">
-                    <div class="card-body">
-                        <p>Rau mùng tơi dùng để nấu canh rất tốt cho tiêu hóa nếu nấu cùng 1 số loại rau canh khác sẽ rất ngon </p>
-                        <button type="button" class="btn btn-success">Đặt hàng</button>
-                    </div>
-                </div>
-                <div class="card">
-                    <img class="card-img-top" src="download 8.jpg" alt="Card image cap">
-                    <div class="card-body">
-                        <p>Rau muống dùng để nấu rất mát rất phù hợp và ngày hè thêm sấu hoặc tranh vào nước canh thì tuyệt vời</p>
-                        <button type="button" class="btn btn-success">Đặt hàng</button>
-                    </div>
-                </div>
-                <div class="card">
-                    <img class="card-img-top" src="download 9.jpg" alt="Card image cap">
-                    <div class="card-body">
-                        <p>Rau mùi dùng để ăn sống rất dễ ăn và mát</p>
-                        <button type="button" class="btn btn-success">Đặt hàng</button>
-
-                    </div>
-                </div>
+                </c:forEach>
             </div>
 
         </div>
 
         <div class="col-sm-3" id="sidebar">
 
-            <div class="list-group" >
+            <div class="list-group">
                 <button type="button" class="list-group-item list-group-item-action active">
                 </button>
                 <button type="button" class="list-group-item list-group-item-action">Danh mục
@@ -148,7 +93,7 @@
                 <button type="button" class="list-group-item list-group-item-action">Các loại rau khác
                 </button>
             </div>
-            <div class="list-group" >
+            <div class="list-group">
                 <button type="button" class="list-group-item list-group-item-action active">
                 </button>
                 <button type="button" class="list-group-item list-group-item-action">Thông tin cá nhân
@@ -161,6 +106,8 @@
             </div>
         </div>
     </div>
+
+
     <!--    phần thân sidebar-->
     <div class="row">
         <div class="col-sm-12">
@@ -175,6 +122,8 @@
             </nav>
         </div>
     </div>
+
+
     <!--footer-->
     <div class="row">
         <div class="col-sm-3">
