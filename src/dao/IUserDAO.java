@@ -7,7 +7,7 @@ import java.util.List;
 public interface IUserDAO {
     List<User> getAllUser();
 
-    User getUser();
+    User getUser(String account);
 
 
 }

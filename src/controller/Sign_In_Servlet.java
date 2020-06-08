@@ -4,6 +4,7 @@ import DBConnection.DBConnection;
 import dao.IProductDAO;
 import dao.ProductDAO;
 import dao.UserDAO;
+import model.Product;
 import model.User;
 
 import javax.servlet.RequestDispatcher;
@@ -14,6 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.List;
 
 @WebServlet(name = "Sign_In_Servlet", urlPatterns = "/sign_in")
 public class Sign_In_Servlet extends HttpServlet {
@@ -23,17 +25,24 @@ public class Sign_In_Servlet extends HttpServlet {
 
     private UserDAO userDAO;
 
+    private IProductDAO productDAO;
+
+
     @Override
     public void init() throws ServletException {
         super.init();
         userDAO = new UserDAO(dbConnection);
+        productDAO=new ProductDAO(dbConnection);
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String account = request.getParameter("userName");
         String password = request.getParameter("password");
 
-        User user = userDAO.getUser();
+        List<Product> list=productDAO.getAllProduct();
+        request.setAttribute("list",list);         //để tạo biến với list sản phẩm để hiển thị
+
+        User user = userDAO.getUser(account);
         if (user.getAccount().equals(account) && user.getPassword().equals(password) && user.getId() == 1) {
             HttpSession session = request.getSession();
             session.setAttribute("ADMIN_IS_LOGGINNED", true);
@@ -54,6 +63,9 @@ public class Sign_In_Servlet extends HttpServlet {
         String action = request.getParameter("action");
         if (action.equals("sign_in")) {
             showSign_InFom(request, response);
+        }
+        switch (action){
+
         }
     }
 

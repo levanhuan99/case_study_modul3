@@ -45,20 +45,23 @@ public class UserDAO implements IUserDAO {
     }
 
     @Override
-    public User getUser() {
-        User user=null;
+    public User getUser(String userName) {
+        User user = null;
         try {
-            PreparedStatement statement=connection.getConnection().prepareStatement(SELECT_USER);
-            ResultSet resultSet=statement.executeQuery();
-            while (resultSet.next()){
-                int id=resultSet.getInt("id");
-                String account=resultSet.getString("account");
-                String password=resultSet.getString("password");
-                String email=resultSet.getString("phone");
-                String phone=resultSet.getString("phone");
-                 user=new User(id,account,password,email,phone);
+            PreparedStatement statement = connection.getConnection().prepareStatement(SELECT_USER);
+            statement.setString(1,userName);
+            ResultSet resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+                int id = resultSet.getInt("id");
+                String account = resultSet.getString("account");
+                String password = resultSet.getString("password");
+                String email = resultSet.getString("email");
+                String phone = resultSet.getString("phone");
+                user = new User(id, account, password, email, phone);
             }
             return user;
+
+
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
