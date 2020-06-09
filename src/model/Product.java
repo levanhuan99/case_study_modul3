@@ -1,13 +1,15 @@
 package model;
 
 public class Product {
+    private int id;
     private String name;
     private float price;
     private String description;
     private String image;
     private int amount;
 
-    public Product(String name, float price, String description, String image, int amount) {
+    public Product(int id,String name, float price, String description, String image, int amount) {
+        this.id=id;
         this.name = name;
         this.price = price;
         this.description = description;
@@ -53,5 +55,13 @@ public class Product {
 
     public void setAmount(int amount) {
         this.amount = amount;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }

@@ -26,10 +26,10 @@ public class ProductServlet extends HttpServlet {
         productDAO=new ProductDAO(connection);
     }
 
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String action=request.getParameter("action");
-
-    }
+//    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+//        String action=request.getParameter("action");
+//
+//    }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         List<Product> list=productDAO.getAllProduct();
