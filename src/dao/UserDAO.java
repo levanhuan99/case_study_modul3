@@ -14,6 +14,7 @@ public class UserDAO implements IUserDAO {
 
     private static final String SELECT_ALL_USER = "select * from user";
     private static final String SELECT_USER = "select * from user where account = ?";
+    private static final String INSERT_USER = "insert into user(account, password, email, phone) values (?,?,?,?)";
     private DBConnection connection;
 
     public UserDAO(DBConnection connection) {
@@ -66,5 +67,19 @@ public class UserDAO implements IUserDAO {
             throwables.printStackTrace();
         }
         return null;
+    }
+
+    @Override
+    public void addUser(User user) {
+        try {
+            PreparedStatement statement = connection.getConnection().prepareStatement(INSERT_USER);
+            statement.setString(1,user.getAccount());
+            statement.setString(2,user.getPassword());
+            statement.setString(3,user.getEmail());
+            statement.setString(4,user.getPhone());
+            statement.executeUpdate();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
     }
 }

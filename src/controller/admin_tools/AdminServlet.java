@@ -40,9 +40,7 @@ public class AdminServlet extends HttpServlet {
             case "add":
                 addProduct(request, response);
                 break;
-            case "delete":
-//                deleteProduct(request, response);
-                break;
+
             case "edit":
                 editProduct(request,response);
                 break;
@@ -63,21 +61,9 @@ public class AdminServlet extends HttpServlet {
         productDAO.updateProduct(product);
 
     }
-//
-//    private void deleteProduct(HttpServletRequest request, HttpServletResponse response) throws IOException {
-//        int id = Integer.parseInt(request.getParameter("id"));
-//        PrintWriter printWriter;
-//        if (id == productDAO.findProductById(id).getId()) {
-//            productDAO.deleteProductById(id);
-//            printWriter = response.getWriter();
-//            printWriter.write("đã xóa sản phẩm id= " + id);
-//        } else {
-//            printWriter = response.getWriter();
-//            printWriter.write("không có sản phẩm với id= " + id);
-//        }
-//
-//    }
-//
+
+
+
     private void addProduct(HttpServletRequest request, HttpServletResponse response) {
         int id = Integer.parseInt(request.getParameter("id"));
         String name = request.getParameter("name");
@@ -99,7 +85,7 @@ public class AdminServlet extends HttpServlet {
                 showAddForm(request, response);
                 break;
             case "delete":
-//                showAlertDelete(request, response);
+                deleteProduct(request, response);
                 break;
             case "edit":
                 showEditForm(request,response);
@@ -116,6 +102,23 @@ public class AdminServlet extends HttpServlet {
         RequestDispatcher dispatcher=request.getRequestDispatcher("home/admin_page/edit_form.jsp");
         dispatcher.forward(request,response);
     }
+    private void showAddForm(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        RequestDispatcher dispatcher = request.getRequestDispatcher("home/admin_page/add_form.jsp");
+        dispatcher.forward(request, response);
+    }
+    private void deleteProduct(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        int id = Integer.parseInt(request.getParameter("id"));
+        PrintWriter printWriter;
+        if (id == productDAO.findProductById(id).getId()) {
+            productDAO.deleteProductById(id);
+            printWriter = response.getWriter();
+            printWriter.write("đã xóa sản phẩm id= " + id);
+        } else {
+            printWriter = response.getWriter();
+            printWriter.write("không có sản phẩm với id= " + id);
+        }
+
+    }
 //
 //    private void showInputEditForm(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 //        RequestDispatcher dispatcher=request.getRequestDispatcher("home/admin_page/edit_input_form.jsp");
@@ -126,7 +129,7 @@ public class AdminServlet extends HttpServlet {
 //        RequestDispatcher dispatcher = request.getRequestDispatcher("home/admin_page/delete_form.jsp");
 //        dispatcher.forward(request, response);
 //    }
-//
+
 //    private void displayAllProduct(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 //        List<Product> products = productDAO.getAllProduct();
 //        request.setAttribute("products", products);
@@ -135,8 +138,5 @@ public class AdminServlet extends HttpServlet {
 //
 //    }
 //
-    private void showAddForm(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        RequestDispatcher dispatcher = request.getRequestDispatcher("home/admin_page/add_form.jsp");
-        dispatcher.forward(request, response);
-    }
+
 }

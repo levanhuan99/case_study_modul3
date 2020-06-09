@@ -9,5 +9,7 @@ public interface IUserDAO {
 
     User getUser(String account);
 
+    void addUser(User user);
+
 
 }

@@ -34,9 +34,8 @@
             <td><c:out value="${product.getAmount()}"></c:out></td>
             <td><c:out value="${product.getImage()}"></c:out></td>
             <td><a href="/Admin?action=edit&&id=${product.getId()}">edit</a></td>
-            <td><a href="/Admin?action=delete?id=${product.getId()}">delete</a></td>
+            <td><a href="/Admin?action=delete&&id=${product.getId()}">delete</a></td>
             </c:forEach>
-
         </tr>
     </table>
 

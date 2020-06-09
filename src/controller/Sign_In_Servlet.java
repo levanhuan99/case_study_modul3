@@ -46,14 +46,14 @@ public class Sign_In_Servlet extends HttpServlet {
             HttpSession session = request.getSession();
             session.setAttribute("ADMIN_IS_LOGGINNED", true);
             session.setAttribute("role", user.getId());
-            RequestDispatcher dispatcher = request.getRequestDispatcher("home/admin_page/display_form.jsp");  //doing thêm bớt xóa sủa của admin
+            RequestDispatcher dispatcher = request.getRequestDispatcher("home/admin_page/display_form.jsp");
             dispatcher.forward(request, response);
 
-        } else if (user.getAccount().equals(account) && user.getPassword().equals(password)) {
+        } else if (user.getAccount().equals(account) && user.getPassword().equals(password)&& user.getId()!=1) {
             HttpSession session = request.getSession();
             session.setAttribute("USER_IS_LOGGINNED", true);
             session.setAttribute("role", user.getId());
-            RequestDispatcher dispatcher = request.getRequestDispatcher("home/user_page/user.jsp");//TODO làm phần loggin của user
+            RequestDispatcher dispatcher = request.getRequestDispatcher("home/user_page/user_display_form.jsp");//TODO làm phần loggin của user
             dispatcher.forward(request, response);
         }
     }
@@ -66,10 +66,6 @@ public class Sign_In_Servlet extends HttpServlet {
     }
 
     private void showSign_InFom(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        //TODO cần setAdtribuit để lấy id ==>thêm sửa xóa sản phẩm
-//        int id=Integer.parseInt(request.getParameter("id"));
-//        Product product=productDAO.findProductById(id);
-//        request.setAttribute("product",product);
         RequestDispatcher dispatcher = request.getRequestDispatcher("home/sign_in_form.jsp");
         dispatcher.forward(request, response);
 
