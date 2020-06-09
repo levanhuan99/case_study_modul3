@@ -27,6 +27,10 @@ public class AdminServlet extends HttpServlet {
         productDAO = new ProductDAO(dbConnection);
     }
 
+
+
+
+
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String action = request.getParameter("action");
         if (action == null) {
@@ -37,29 +41,43 @@ public class AdminServlet extends HttpServlet {
                 addProduct(request, response);
                 break;
             case "delete":
-                deleteProduct(request, response);
+//                deleteProduct(request, response);
                 break;
             case "edit":
+                editProduct(request,response);
                 break;
+
             default:
                 break;
         }
     }
 
-    private void deleteProduct(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        int id = Integer.parseInt(request.getParameter("id"));
-        PrintWriter printWriter;
-        if (id == productDAO.findProductById(id).getId()) {
-            productDAO.deleteProductById(id);
-            printWriter = response.getWriter();
-            printWriter.write("đã xóa sản phẩm id= " + id);
-        } else {
-            printWriter = response.getWriter();
-            printWriter.write("không có sản phẩm với id= " + id);
-        }
+    private void editProduct(HttpServletRequest request, HttpServletResponse response) {
+        int id=Integer.parseInt(request.getParameter("id"));
+        String name=request.getParameter("name");
+        Float price=Float.parseFloat(request.getParameter("price"));
+        String description=request.getParameter("description");
+        String image=request.getParameter("image");
+        int amount=Integer.parseInt(request.getParameter("amount"));
+        Product product=new Product(id,name,price,description,image,amount);
+        productDAO.updateProduct(product);
 
     }
-
+//
+//    private void deleteProduct(HttpServletRequest request, HttpServletResponse response) throws IOException {
+//        int id = Integer.parseInt(request.getParameter("id"));
+//        PrintWriter printWriter;
+//        if (id == productDAO.findProductById(id).getId()) {
+//            productDAO.deleteProductById(id);
+//            printWriter = response.getWriter();
+//            printWriter.write("đã xóa sản phẩm id= " + id);
+//        } else {
+//            printWriter = response.getWriter();
+//            printWriter.write("không có sản phẩm với id= " + id);
+//        }
+//
+//    }
+//
     private void addProduct(HttpServletRequest request, HttpServletResponse response) {
         int id = Integer.parseInt(request.getParameter("id"));
         String name = request.getParameter("name");
@@ -70,7 +88,7 @@ public class AdminServlet extends HttpServlet {
         Product product = new Product(id, name, price, description, image, amount);
         productDAO.addProduct(product);
     }
-
+//
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String action = request.getParameter("action");
         if (action == null) {
@@ -80,39 +98,43 @@ public class AdminServlet extends HttpServlet {
             case "add":
                 showAddForm(request, response);
                 break;
-            case "display":
-                displayAllProduct(request, response);
-                break;
             case "delete":
-                showAlertDelete(request, response);
+//                showAlertDelete(request, response);
                 break;
             case "edit":
                 showEditForm(request,response);
-                break;
             default:
                 break;
 
         }
     }
-
+//
     private void showEditForm(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        int id=Integer.parseInt(request.getParameter("id"));
+        Product product=productDAO.findProductById(id);
+        request.setAttribute("product1",product);
         RequestDispatcher dispatcher=request.getRequestDispatcher("home/admin_page/edit_form.jsp");
         dispatcher.forward(request,response);
     }
-
-    private void showAlertDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        RequestDispatcher dispatcher = request.getRequestDispatcher("home/admin_page/delete_form.jsp");
-        dispatcher.forward(request, response);
-    }
-
-    private void displayAllProduct(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        List<Product> products = productDAO.getAllProduct();
-        request.setAttribute("products", products);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("home/admin_page/display_form.jsp");
-        dispatcher.forward(request, response);
-
-    }
-
+//
+//    private void showInputEditForm(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+//        RequestDispatcher dispatcher=request.getRequestDispatcher("home/admin_page/edit_input_form.jsp");
+//        dispatcher.forward(request,response);
+//    }
+//
+//    private void showAlertDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+//        RequestDispatcher dispatcher = request.getRequestDispatcher("home/admin_page/delete_form.jsp");
+//        dispatcher.forward(request, response);
+//    }
+//
+//    private void displayAllProduct(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+//        List<Product> products = productDAO.getAllProduct();
+//        request.setAttribute("products", products);
+//        RequestDispatcher dispatcher = request.getRequestDispatcher("home/admin_page/display_form.jsp");
+//        dispatcher.forward(request, response);
+//
+//    }
+//
     private void showAddForm(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         RequestDispatcher dispatcher = request.getRequestDispatcher("home/admin_page/add_form.jsp");
         dispatcher.forward(request, response);

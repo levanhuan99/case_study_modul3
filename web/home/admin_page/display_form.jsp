@@ -12,7 +12,8 @@
     <title>Display</title>
 </head>
 <body>
-<form method="get" action="/Admin?action=display">
+<h2><a href="/Admin?action=add">thêm sản phẩm</a></h2>
+<form>
     <table>
         <tr>
             <td>Product name</td>
@@ -24,7 +25,7 @@
             <td>Edit</td>
             <td>Delete</td>
         </tr>
-        <c:forEach items="${products}" var="product">
+        <c:forEach items="${list}" var="product">
         <tr>
             <td><c:out value="${product.getName()}"></c:out></td>
             <td><c:out value="${product.getId()}"></c:out></td>
@@ -32,11 +33,9 @@
             <td><c:out value="${product.getDescription()}"></c:out></td>
             <td><c:out value="${product.getAmount()}"></c:out></td>
             <td><c:out value="${product.getImage()}"></c:out></td>
-            <td ><a href="">edit</a> </td>
-            <td><a href="">delete</a> </td>
-        </c:forEach>
-
-
+            <td><a href="/Admin?action=edit&&id=${product.getId()}">edit</a></td>
+            <td><a href="/Admin?action=delete?id=${product.getId()}">delete</a></td>
+            </c:forEach>
 
         </tr>
     </table>

@@ -46,7 +46,7 @@ public class Sign_In_Servlet extends HttpServlet {
             HttpSession session = request.getSession();
             session.setAttribute("ADMIN_IS_LOGGINNED", true);
             session.setAttribute("role", user.getId());
-            RequestDispatcher dispatcher = request.getRequestDispatcher("home/admin_page/admin-view.jsp");  //doing thêm bớt xóa sủa của admin
+            RequestDispatcher dispatcher = request.getRequestDispatcher("home/admin_page/display_form.jsp");  //doing thêm bớt xóa sủa của admin
             dispatcher.forward(request, response);
 
         } else if (user.getAccount().equals(account) && user.getPassword().equals(password)) {

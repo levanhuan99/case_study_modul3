@@ -12,13 +12,14 @@
 </head>
 <body>
 <form method="get">
-    <h1> XIN CHÀO ĐẠI KA .ĐẠI KA MUỐN LÀM GÌ Ạ?</h1>
-    <a href="/Admin?action=add">thêm sản phẩm</a>
-    <a href="/Admin?action=display">xem tất cả sản phẩm</a>
-    <a href="/Admin?action=delete">xóa sản phẩm</a>
-    <a href="/Admin?action=edit">sửa sản phẩm</a>
-    <a>xem thông tin khách hàng</a>
-    <a>số tiền đã bán được hàng </a>
+<%--    <h1> XIN CHÀO ĐẠI KA .ĐẠI KA MUỐN LÀM GÌ Ạ?</h1>--%>
+<%--    <a href="/Admin?action=add">thêm sản phẩm</a>--%>
+<%--    <a href="/Admin?action=display">xem tất cả sản phẩm</a>--%>
+<%--    <a href="/Admin?action=delete">xóa sản phẩm</a>--%>
+<%--    <a href="/Admin?action=edit">sửa sản phẩm</a>--%>
+<%--    <a>xem thông tin khách hàng</a>--%>
+<%--    <a>số tiền đã bán được hàng </a>--%>
+
 </form>
 
 
