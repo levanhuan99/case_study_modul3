@@ -32,8 +32,8 @@
             <td><c:out value="${product.getDescription()}"></c:out></td>
             <td><c:out value="${product.getAmount()}"></c:out></td>
             <td><c:out value="${product.getImage()}"></c:out></td>
-            <td>edit</td>
-            <td>delete</td>
+            <td ><a href="">edit</a> </td>
+            <td><a href="">delete</a> </td>
         </c:forEach>
 
 

@@ -23,11 +23,11 @@
 
         </tr>
         <tr>
-            <td><input name="name" value="${requestScope["list"].getName()}">   </td>
-            <td><input name="id" value="${requestScope["list"].getId()}" type="hidden"> </td>
-            <td><input name="price" value="${requestScope["list"].getPrice()}"> </td>
-            <td><input name="description" value="${requestScope["list"].getDescription()}"> </td>
-            <td><input name="amount" value="${requestScope["list"].getAmount()}">   </td>
+            <td><input name="name" value="${requestScope["list"].getName()}"></td>
+            <td><input name="id" value="${requestScope["list"].getId()}" type="hidden"></td>
+            <td><input name="price" value="${requestScope["list"].getPrice()}"></td>
+            <td><input name="description" value="${requestScope["list"].getDescription()}"></td>
+            <td><input name="amount" value="${requestScope["list"].getAmount()}"></td>
         </tr>
     </table>
 </form>
