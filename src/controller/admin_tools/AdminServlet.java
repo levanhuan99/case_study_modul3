@@ -36,14 +36,19 @@ public class AdminServlet extends HttpServlet {
                 addProduct(request,response);
                 break;
             case "delete":
+                deleteProduct(request,response);
                 break;
             case "edit":
                 break;
             default:
                 break;
-
-
         }
+    }
+
+    private void deleteProduct(HttpServletRequest request, HttpServletResponse response) {
+        int id=Integer.parseInt(request.getParameter("id"));
+        Product product=productDAO.findProductById(id);
+        productDAO.deleteProductById(product.getId());
     }
 
     private void addProduct(HttpServletRequest request, HttpServletResponse response) {

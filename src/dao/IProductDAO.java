@@ -12,4 +12,6 @@ public interface IProductDAO {
     Product findProductById(int id);
 
     void  addProduct(Product product);
+
+    void deleteProductById(int id);
 }

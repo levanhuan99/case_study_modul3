@@ -15,6 +15,7 @@ public class ProductDAO implements IProductDAO {
     private static final String SELECT_ALL_PRODUCTS="select * from product";
     private static final String SELECT_PRODUCT="select * from product where id= ?";
     private static final String INSERT_Product = "insert into product values (?,?,?,?,?,?)";
+    private static final String DELETE_PRODUCT="delete from user where id = ?;";
 
 
     public ProductDAO(DBConnection dbConnection) {
@@ -82,6 +83,17 @@ public class ProductDAO implements IProductDAO {
             preparedStatement.setInt(6,product.getAmount());
             preparedStatement.executeUpdate();
 
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+    }
+
+    @Override
+    public void deleteProductById(int id) {
+        try {
+            PreparedStatement statement=dbconnection.getConnection().prepareStatement(DELETE_PRODUCT);
+            statement.setInt(1,id);
+            statement.executeUpdate();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
