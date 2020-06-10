@@ -17,7 +17,7 @@ public class ProductDAO implements IProductDAO {
     private static final String INSERT_Product = "insert into product values (?,?,?,?,?,?)";
     private static final String DELETE_PRODUCT = "delete from product where id = ?;";
     private static final String UPDATE_PRODUCT = "update product set name = ?,price= ?, description =?,image=?,amount=? where id = ?;";
-
+    private static final String SELECT_PRODUCT_BY_NAME = "select * from product where name like %?%;";
 
     public ProductDAO(DBConnection dbConnection) {
         this.dbconnection = dbConnection;
@@ -109,14 +109,40 @@ public class ProductDAO implements IProductDAO {
             statement.setFloat(2, product.getPrice());
             statement.setString(3, product.getDescription());
             statement.setString(4, product.getImage());
-            statement.setInt(5,product.getAmount());
-            statement.setInt(6,product.getId());
+            statement.setInt(5, product.getAmount());
+            statement.setInt(6, product.getId());
             statement.executeUpdate();
             //update product set name = ?,price= ?, description =?,image=?,amount=? where id = ?;";
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
 
+
+
+    }
+
+    @Override
+    public List<Product> selectProductByName(String name) {
+        List<Product> list=new ArrayList<>();
+        try {
+            PreparedStatement statement=dbconnection.getConnection().prepareStatement(SELECT_PRODUCT_BY_NAME);
+            statement.setString(1,name);
+            ResultSet resultSet=statement.executeQuery();
+            while (resultSet.next()) {
+                int id = resultSet.getInt("id");
+                String proName = resultSet.getString("name");
+                float price = resultSet.getFloat("price");
+                String description = resultSet.getString("description");
+                String image = resultSet.getString("image");
+                int amount = resultSet.getInt("amount");
+                list.add(new Product(id, proName, price, description, image, amount));
+            }
+            return list;
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        return null;
     }
 
 

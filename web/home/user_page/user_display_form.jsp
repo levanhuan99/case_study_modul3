@@ -43,10 +43,9 @@
                         <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Bản Đồ Cửa Hàng</a>
                     </li>
                 </ul>
-                <form class="form-inline my-2 my-lg-0">
-                    <input class="form-control mr-sm-2" type="search" placeholder="Tìm Kiếm" aria-label="Search">
-                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit"
-                            style="color: white ;border: black">Tìm Kiếm</button>
+                <form class="form-inline my-2 my-lg-0" method="get" action="/User?action=search">
+                    <input class="form-control mr-sm-2"  name="search" placeholder="Tìm Kiếm" aria-label="Search">
+                    <input type="submit" value="tìm kiếm">
                 </form>
                 <%--                <button type="button" class="btn btn-success">Đăng nhập</button>--%>
                 <%--                <button type="button" class="btn btn-success">Đăng ký</button>--%>
@@ -100,7 +99,7 @@
                 </button>
                 <button type="button" class="list-group-item list-group-item-action">Tài khoản
                 </button>
-                <button type="button" class="list-group-item list-group-item-action"><a href="" >Giỏ hàng</a>
+                <button type="button" class="list-group-item list-group-item-action">Giỏ hàng
                     <i class="fas fa-shopping-cart"></i>
                 </button>
             </div>

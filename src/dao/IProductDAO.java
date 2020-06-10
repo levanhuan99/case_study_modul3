@@ -16,4 +16,6 @@ public interface IProductDAO {
     void deleteProductById(int id);
 
     void  updateProduct(Product product);
+
+    List<Product> selectProductByName(String name);
 }

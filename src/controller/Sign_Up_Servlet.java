@@ -38,7 +38,6 @@ public class Sign_Up_Servlet extends HttpServlet {
             userDAO.addUser(user);
             response.sendRedirect("/home_page");//có thể làm thêm phần gửi mail để xác nhận
         }
-
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
