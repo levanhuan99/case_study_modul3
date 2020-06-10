@@ -37,7 +37,6 @@ public class PermissionFilter implements Filter {
         if (o != null) {
 
             int role = Integer.parseInt(o.toString());
-
             if (role > 1) {
                 chain.doFilter(req, resp);
             }

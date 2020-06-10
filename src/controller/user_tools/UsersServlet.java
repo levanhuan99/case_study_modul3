@@ -37,7 +37,13 @@ public class UsersServlet extends HttpServlet {
             case "search":
                 showResult(request, response);
                 break;
+            case "show_detail":
+                showDetail(request,response);
         }
+    }
+
+    private void showDetail(HttpServletRequest request, HttpServletResponse response) {
+
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -49,6 +55,7 @@ public class UsersServlet extends HttpServlet {
         List<Product> list = null;
         String nameSearch = request.getParameter("search");
         list = productDAO.selectProductByName(nameSearch);
+
         request.setAttribute("search_list", list);
         RequestDispatcher dispatcher;
         if (list.size() == 0) {

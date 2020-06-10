@@ -44,13 +44,13 @@
                     </li>
                 </ul>
                 <form class="form-inline my-2 my-lg-0" method="post" action="/User?action=search">
-                    <input class="form-control mr-sm-2"  name="search" placeholder="Tìm Kiếm" aria-label="Search">
+                    <input class="form-control mr-sm-2" name="search" placeholder="Tìm Kiếm" aria-label="Search">
                     <input type="submit" value="tìm kiếm">
                 </form>
                 <%--                <button type="button" class="btn btn-success">Đăng nhập</button>--%>
                 <%--                <button type="button" class="btn btn-success">Đăng ký</button>--%>
-<%--                <a href="/sign_in?action=sign_in" style="color:black ">Đăng nhập</a>--%>
-<%--                <a href="/sign_up?action=sign_up" style="color:black ">Đăng ký</a> để thêm phần tên của khách hàng TODO--%>
+                <%--                <a href="/sign_in?action=sign_in" style="color:black ">Đăng nhập</a>--%>
+                <%--                <a href="/sign_up?action=sign_up" style="color:black ">Đăng ký</a> để thêm phần tên của khách hàng TODO--%>
             </div>
         </nav>
     </div>
@@ -65,11 +65,16 @@
                         <div class="card">
                             <img class="card-img-top" src="${product.getImage()}" alt="Card image cap">
                             <div class="card-body">
-                                <p>${product.getName()}</p><br>
-                                <p>${product.getPrice()}</p><br>
-                                <button type="button" class="btn btn-success">Đặt hàng</button>
+                                <form method="post" action="/User">
+                                    <p>${product.getName()}</p><br>
+                                    <p>${product.getPrice()}</p><br>
+                                    <input type="hidden" name="id" value="${}">
+                                    <button type="button" class="btn btn-success">Đặt hàng</button>//TODO
+                                    <input type="submit" value="chi tiết">
+                                </form>
                             </div>
                         </div>
+
                     </div>
                 </c:forEach>
             </div>

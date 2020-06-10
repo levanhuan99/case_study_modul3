@@ -55,7 +55,7 @@ public class Sign_In_Servlet extends HttpServlet {
                 RequestDispatcher dispatcher = request.getRequestDispatcher("home/user_page/user_display_form.jsp");//TODO làm phần loggin của user
                 dispatcher.forward(request, response);
             }else {
-                //đăng nhập không thành công
+
 
             }
         }
