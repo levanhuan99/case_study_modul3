@@ -35,26 +35,31 @@ public class Sign_In_Servlet extends HttpServlet {
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String account = request.getParameter("userName");
-        String password = request.getParameter("password");
+        String action=request.getParameter("action");
+        if (action.equals("sign_in")){
+            String account = request.getParameter("userName");
+            String password = request.getParameter("password");
 
-        List<Product> list=productDAO.getAllProduct();
-        request.setAttribute("list",list);         //để tạo biến với list sản phẩm để hiển thị
-        HttpSession session = request.getSession();
-        User user = userDAO.getUser(account);
-        if (user.getAccount().equals(account) && user.getPassword().equals(password) && user.getId() == 1) {
-            RequestDispatcher dispatcher = request.getRequestDispatcher("home/admin_page/display_form.jsp");
-            dispatcher.forward(request, response);
+            List<Product> list=productDAO.getAllProduct();
+            request.setAttribute("list",list);
+            HttpSession session = request.getSession();
+            User user = userDAO.getUser(account);
+            if (user.getAccount().equals(account) && user.getPassword().equals(password) && user.getId() == 1) {
+                RequestDispatcher dispatcher = request.getRequestDispatcher("home/admin_page/display_form.jsp");
+                dispatcher.forward(request, response);
 
-        } else if (user.getAccount().equals(account) && user.getPassword().equals(password)&& user.getId()!=1) {
-            session.setAttribute("USER_IS_LOGGINNED", true);
-            session.setAttribute("roleUser", user.getId());
-            RequestDispatcher dispatcher = request.getRequestDispatcher("home/user_page/user_display_form.jsp");//TODO làm phần loggin của user
-            dispatcher.forward(request, response);
-        }else {
-            //đăng nhập không thành công
+            } else if (user.getAccount().equals(account) && user.getPassword().equals(password)&& user.getId()>1) {
+                session.setAttribute("USER_IS_LOGGINNED", true);
+                session.setAttribute("roleUser", user.getId());
 
+                RequestDispatcher dispatcher = request.getRequestDispatcher("home/user_page/user_display_form.jsp");//TODO làm phần loggin của user
+                dispatcher.forward(request, response);
+            }else {
+                //đăng nhập không thành công
+
+            }
         }
+
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

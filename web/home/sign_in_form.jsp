@@ -5,7 +5,7 @@
     <title>Title</title>
 </head>
 <body>
-<form method="post">
+<form method="post" action="/sign_in?action=sign_in">
     <table border="1 solid">
         <tr>
             <td>account name:<input type="text"name="userName" placeholder="account name"></td>
@@ -13,11 +13,8 @@
         <tr>
             <td>password :<input type="text" name="password" placeholder="password"></td>
         </tr>
-
-        <tr>
-            <td><input type="submit"></td>
-        </tr>
     </table>
+    <input type="submit">
 </form>
 </body>
 </html>

@@ -40,6 +40,8 @@ public class Sign_Up_Servlet extends HttpServlet {
         }
     }
 
+
+
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String action = request.getParameter("action");
         if (action.equals("sign_up")) {
