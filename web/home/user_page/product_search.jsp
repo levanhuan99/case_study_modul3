@@ -19,12 +19,12 @@
         <td> Product price </td>
         <td> Product description </td>
     </tr>
-    <c:forEach items="search_list" var="product">
+    <c:forEach items="${search_list}" var="product1">
         <tr>
-            <td><c:out value="${product.getId()}"></c:out></td>
-            <td><c:out value="${product.getName()}"></c:out></td>
-            <td><c:out value="${product.getPrice()}"></c:out></td>
-            <td><c:out value="${product.getDescription()}"></c:out></td>
+            <td><c:out value="${product1.getId()}"></c:out></td>
+            <td><c:out value="${product1.getName()}"></c:out></td>
+            <td><c:out value="${product1.getPrice()}"></c:out></td>
+            <td><c:out value="${product1.getDescription()}"></c:out></td>
             <td><input type="submit" value="đặt hàng"></td>
         </tr>
 

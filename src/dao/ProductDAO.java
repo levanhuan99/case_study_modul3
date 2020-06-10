@@ -17,7 +17,7 @@ public class ProductDAO implements IProductDAO {
     private static final String INSERT_Product = "insert into product values (?,?,?,?,?,?)";
     private static final String DELETE_PRODUCT = "delete from product where id = ?;";
     private static final String UPDATE_PRODUCT = "update product set name = ?,price= ?, description =?,image=?,amount=? where id = ?;";
-    private static final String SELECT_PRODUCT_BY_NAME = "select * from product where name like %?%;";
+    private static final String SELECT_PRODUCT_BY_NAME = "select * from product where name like ?;";
 
     public ProductDAO(DBConnection dbConnection) {
         this.dbconnection = dbConnection;
@@ -126,7 +126,7 @@ public class ProductDAO implements IProductDAO {
         List<Product> list=new ArrayList<>();
         try {
             PreparedStatement statement=dbconnection.getConnection().prepareStatement(SELECT_PRODUCT_BY_NAME);
-            statement.setString(1,name);
+            statement.setString(1,"%" +name+ "%");
             ResultSet resultSet=statement.executeQuery();
             while (resultSet.next()) {
                 int id = resultSet.getInt("id");

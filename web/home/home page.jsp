@@ -43,14 +43,14 @@
                         <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Bản Đồ Cửa Hàng</a>
                     </li>
                 </ul>
-                <form class="form-inline my-2 my-lg-0">
+                <form class="form-inline my-2 my-lg-0" method="post" action="/home_page?action=result_search">
                     <input class="form-control mr-sm-2" type="search" placeholder="Tìm Kiếm" aria-label="Search">
                     <button class="btn btn-outline-success my-2 my-sm-0" type="submit"
                             style="color: white ;border: black">Tìm Kiếm
                     </button>
                 </form>
-<%--                <button type="button" class="btn btn-success">Đăng nhập</button>--%>
-<%--                <button type="button" class="btn btn-success">Đăng ký</button>--%>
+                <%--                <button type="button" class="btn btn-success">Đăng nhập</button>--%>
+                <%--                <button type="button" class="btn btn-success">Đăng ký</button>--%>
                 <a href="/sign_in?action=sign_in" style="color:black ">Đăng nhập</a>
                 <a href="/sign_up?action=sign_up" style="color:black ">Đăng ký</a>
             </div>

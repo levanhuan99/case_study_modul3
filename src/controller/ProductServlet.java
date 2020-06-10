@@ -26,10 +26,30 @@ public class ProductServlet extends HttpServlet {
         productDAO=new ProductDAO(connection);
     }
 
-//    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//        String action=request.getParameter("action");
-//
-//    }
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String action=request.getParameter("action");
+        switch (action){
+            case "result_search":
+                showResult(request,response);
+                break;
+        }
+
+    }
+
+    private void showResult(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        List<Product> list = null;
+        String nameSearch = request.getParameter("search");
+        list = productDAO.selectProductByName(nameSearch);
+        request.setAttribute("search_list", list);
+        RequestDispatcher dispatcher;
+        if (list.size() == 0) {
+            dispatcher = request.getRequestDispatcher("/...thong bao khong tim thay hang");
+            dispatcher.forward(request, response);
+        } else {
+            dispatcher = request.getRequestDispatcher("home/user_page/product_search.jsp");
+            dispatcher.forward(request, response);
+        }
+    }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         List<Product> list=productDAO.getAllProduct();

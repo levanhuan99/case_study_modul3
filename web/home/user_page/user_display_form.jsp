@@ -43,7 +43,7 @@
                         <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Bản Đồ Cửa Hàng</a>
                     </li>
                 </ul>
-                <form class="form-inline my-2 my-lg-0" method="get" action="/User?action=search">
+                <form class="form-inline my-2 my-lg-0" method="post" action="/User?action=search">
                     <input class="form-control mr-sm-2"  name="search" placeholder="Tìm Kiếm" aria-label="Search">
                     <input type="submit" value="tìm kiếm">
                 </form>
