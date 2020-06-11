@@ -9,7 +9,18 @@ import java.io.IOException;
 @WebServlet(name = "ForgotPassword_Servlet",urlPatterns = "/Password")
 public class ForgotPassword_Servlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        
+        String action=request.getParameter("action");
+        if (action==null){
+            action="";
+        }
+        if (action.equals("get_pass")){
+            sendPasswordToEmail(request,response);
+        }
+        
+    }
 
+    private void sendPasswordToEmail(HttpServletRequest request, HttpServletResponse response) {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -18,7 +29,8 @@ public class ForgotPassword_Servlet extends HttpServlet {
             action="";
         }
         if (action.equals("get_password")){
-            RequestDispatcher dispatcher=request.getRequestDispatcher("home/forgot_password_form.jsap")
+            RequestDispatcher dispatcher=request.getRequestDispatcher("home/forgot_password_form.jsp");
+            dispatcher.forward(request,response);
         }
     }
 }
