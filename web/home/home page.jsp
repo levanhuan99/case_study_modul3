@@ -51,6 +51,8 @@
                 <%--                <button type="button" class="btn btn-success">Đăng ký</button>--%>
                 <a href="/sign_in?action=sign_in" style="color:black ">Đăng nhập</a>
                 <a href="/sign_up?action=sign_up" style="color:black ">Đăng ký</a>
+                <a href="/Password?action=get_password" style="color:black ">quên mật khẩu</a>
+
             </div>
         </nav>
     </div>
@@ -95,10 +97,8 @@
             <div class="list-group">
                 <button type="button" class="list-group-item list-group-item-action active">
                 </button>
-                <button type="button" class="list-group-item list-group-item-action">Thông tin cá nhân
-                </button>
-                <button type="button" class="list-group-item list-group-item-action">Tài khoản
-                </button>
+                <a href="sign_in_form.jsp"> thông tin cá nhân</a><br>
+                <a href="sign_in_form.jsp"> tài khoản</a><br>
                 <button type="button" class="list-group-item list-group-item-action">Giỏ hàng
                     <i class="fas fa-shopping-cart"></i>
                 </button>

@@ -13,5 +13,7 @@ public interface IUserDAO {
 
     User getUserByID(int id);
 
+    void  updateUser(User user);
+
 
 }

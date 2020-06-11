@@ -28,7 +28,7 @@
             <td><c:out value='${requestScope["accountInfor"].getPassword()}'></c:out></td>
             <td><c:out value='${requestScope["accountInfor"].getEmail()}'></c:out></td>
             <td><c:out value='${requestScope["accountInfor"].getPhone()}'></c:out></td>
-            <td><a href="/User?action=edit_user_information">sửa</a></td>
+            <td><a href="/User?action=edit_user_information&&idEdit=${requestScope["accountInfor"].getId()}">sửa</a></td>
         </tr>
     </table>
 </form>

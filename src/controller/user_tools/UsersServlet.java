@@ -47,14 +47,30 @@ public class UsersServlet extends HttpServlet {
             case "check_password":
                 checkPassword(request,response);
                 break;
+            case "edit_information":
+                editInformation(request,response);
+                break;
         }
+    }
+
+    private void editInformation(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        int id=Integer.parseInt(request.getParameter("idUpdate"));
+        String account=request.getParameter("account");
+        String password=request.getParameter("password");
+        String email=request.getParameter("email");
+        String phone=request.getParameter("phone");
+        User user=new User(id,account,password,email,phone);
+        userDAO.updateUser(user);
+        RequestDispatcher dispatcher=request.getRequestDispatcher("home/sign_in_form.jsp");
+        dispatcher.forward(request,response);
+
     }
 
     private void checkPassword(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String password=request.getParameter("password");
         int id=Integer.parseInt(request.getParameter("idToCheck"));
         User user=userDAO.getUserByID(id);
-        String rePass=user.getPassword();
+
         RequestDispatcher dispatcher;
         if (password.equals(user.getPassword())){
             request.setAttribute("accountInfor",user);
@@ -88,7 +104,6 @@ public class UsersServlet extends HttpServlet {
                 break;
             case "account":
                 checkPasswordForm(request,response);
-
                 break;
             case "edit_user_information":
                 showEditUserForm(request,response);
@@ -109,7 +124,13 @@ public class UsersServlet extends HttpServlet {
         dispatcher.forward(request,response);
     }
 
-    private void showEditUserForm(HttpServletRequest request, HttpServletResponse response) {
+    private void showEditUserForm(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        int id=Integer.parseInt(request.getParameter("idEdit"));
+        User user=userDAO.getUserByID(id);
+        request.setAttribute("user3",user);
+        RequestDispatcher dispatcher=request.getRequestDispatcher("home/user_page/edit_information.jsp");
+        dispatcher.forward(request,response);
+
         //TODO đang làm phần sửa thông tin user,cần xác minh mật khẩu trước khi click vào tài khoản
 
     }
