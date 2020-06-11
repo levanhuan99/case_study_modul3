@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 
 @WebServlet(name = "Sign_In_Servlet", urlPatterns = "/sign_in")
@@ -44,21 +45,29 @@ public class Sign_In_Servlet extends HttpServlet {
             request.setAttribute("list",list);
 
             HttpSession session = request.getSession();
-            User user = userDAO.getUser(account);
-            request.setAttribute("user2",user);
-            if (user.getAccount().equals(account) && user.getPassword().equals(password) && user.getId() == 1) {
-                RequestDispatcher dispatcher = request.getRequestDispatcher("home/admin_page/display_form.jsp");
-                dispatcher.forward(request, response);
+            Object o = session.getAttribute("USER_IS_LOGGINNED");
 
-            } else if (user.getAccount().equals(account) && user.getPassword().equals(password)&& user.getId()>1) {
-                session.setAttribute("USER_IS_LOGGINNED", true);
-                session.setAttribute("roleUser", user.getId());
-                session.setAttribute("user", user);
+            if (o == null) {
+                User user = userDAO.getUser(account);
+                request.setAttribute("user2",user);
+                if (user.getAccount().equals(account) && user.getPassword().equals(password) && user.getId() == 1) {
+                    RequestDispatcher dispatcher = request.getRequestDispatcher("home/admin_page/display_form.jsp");
+                    dispatcher.forward(request, response);
 
-                RequestDispatcher dispatcher = request.getRequestDispatcher("home/user_page/user_display_form.jsp");//TODO làm phần loggin của user
-                dispatcher.forward(request, response);
-            }else {
+                } else if (user.getAccount().equals(account) && user.getPassword().equals(password)&& user.getId()>1) {
+                    session.setAttribute("USER_IS_LOGGINNED", true);
+                    session.setAttribute("roleUser", user.getId());
+                    session.setAttribute("user", user);
 
+                    RequestDispatcher dispatcher = request.getRequestDispatcher("home/user_page/user_display_form.jsp");//TODO làm phần loggin của user
+                    dispatcher.forward(request, response);
+                }else {
+
+                }
+            }
+            else {
+                PrintWriter writer = response.getWriter();
+                writer.write("banj chuwa dang xuat");//TODO cần làm thêm trang thông báo phần trang khi đã đang nhập
             }
         }
 
