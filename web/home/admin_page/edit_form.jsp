@@ -12,7 +12,7 @@
 </head>
 <body>
 <form method="post" action="/Admin?action=edit">
-    <table border="1">
+    <table class="table">
         <tr>
             <td>Product`name</td>
             <td>Product`Id</td>

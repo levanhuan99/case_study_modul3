@@ -1,4 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
 <%--
   Created by IntelliJ IDEA.
   User: VanHuan
@@ -12,13 +14,15 @@
     <title>List Product</title>
 </head>
 <body>
-<table>
+<table class="table">
+    <thead>
     <tr>
-        <td> Product id </td>
-        <td> Product name </td>
-        <td> Product price </td>
-        <td> Product description </td>
+        <th scope="col"> Product id</th>
+        <th scope="col">Product name</th>
+        <th scope="col">Product price</th>
+        <th scope="col">Product description</th>
     </tr>
+    </thead>
     <c:forEach items="${search_list1}" var="product1">
         <tr>
             <td><c:out value="${product1.getId()}"></c:out></td>
