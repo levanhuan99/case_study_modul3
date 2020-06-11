@@ -44,7 +44,28 @@ public class UsersServlet extends HttpServlet {
             case "show_detail":
                 showDetail(request,response);
                 break;
+            case "check_password":
+                checkPassword(request,response);
+                break;
         }
+    }
+
+    private void checkPassword(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String password=request.getParameter("password");
+        int id=Integer.parseInt(request.getParameter("idToCheck"));
+        User user=userDAO.getUserByID(id);
+        String rePass=user.getPassword();
+        RequestDispatcher dispatcher;
+        if (password.equals(user.getPassword())){
+            request.setAttribute("accountInfor",user);
+             dispatcher=request.getRequestDispatcher("home/user_page/account_information.jsp");
+            dispatcher.forward(request,response);
+        }else {
+            dispatcher=request.getRequestDispatcher("");//TODO nếu sai mật khẩu thì đi đến trang j đấy
+            dispatcher.forward(request,response);
+        }
+
+
     }
 
     private void showDetail(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -65,9 +86,9 @@ public class UsersServlet extends HttpServlet {
             case "customer_information":
                 showCustomerInfor(request,response);
                 break;
-            case "account"://cần xác minh mật khẩu trước rồi lmj thì làm
+            case "account":
                 checkPasswordForm(request,response);
-                showAccount(request,response);//đang làm sửa thông tin của người dùng
+
                 break;
             case "edit_user_information":
                 showEditUserForm(request,response);
@@ -80,6 +101,10 @@ public class UsersServlet extends HttpServlet {
     }
 
     private void checkPasswordForm(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        int id=Integer.parseInt(request.getParameter("customerID"));
+        User user=userDAO.getUserByID(id);
+        request.setAttribute("informationToCheck",user);
+
         RequestDispatcher dispatcher=request.getRequestDispatcher("home/user_page/check_password_form.jsp");
         dispatcher.forward(request,response);
     }
@@ -87,15 +112,6 @@ public class UsersServlet extends HttpServlet {
     private void showEditUserForm(HttpServletRequest request, HttpServletResponse response) {
         //TODO đang làm phần sửa thông tin user,cần xác minh mật khẩu trước khi click vào tài khoản
 
-    }
-
-    private void showAccount(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-        int id=Integer.parseInt(request.getParameter("customerID"));
-        User user=userDAO.getUserByID(id);//có thể thay mấy thứ này bằng sesstion
-        request.setAttribute("accountInfor",user);
-        RequestDispatcher dispatcher=request.getRequestDispatcher("home/user_page/account_information.jsp");
-        dispatcher.forward(request,response);
     }
 
     private void showCustomerInfor(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
