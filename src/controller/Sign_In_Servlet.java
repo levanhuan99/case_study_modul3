@@ -42,8 +42,10 @@ public class Sign_In_Servlet extends HttpServlet {
 
             List<Product> list=productDAO.getAllProduct();
             request.setAttribute("list",list);
+
             HttpSession session = request.getSession();
             User user = userDAO.getUser(account);
+            request.setAttribute("user2",user);
             if (user.getAccount().equals(account) && user.getPassword().equals(password) && user.getId() == 1) {
                 RequestDispatcher dispatcher = request.getRequestDispatcher("home/admin_page/display_form.jsp");
                 dispatcher.forward(request, response);
@@ -55,7 +57,6 @@ public class Sign_In_Servlet extends HttpServlet {
                 RequestDispatcher dispatcher = request.getRequestDispatcher("home/user_page/user_display_form.jsp");//TODO làm phần loggin của user
                 dispatcher.forward(request, response);
             }else {
-
 
             }
         }

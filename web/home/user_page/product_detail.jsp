@@ -43,14 +43,12 @@
                         <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Bản Đồ Cửa Hàng</a>
                     </li>
                 </ul>
-                <form class="form-inline my-2 my-lg-0" method="post" action="/User?action=search">
-                    <input class="form-control mr-sm-2" name="search" placeholder="Tìm Kiếm" aria-label="Search">
+                <form class="form-inline my-2 my-lg-0" method="post" action="/home_page?action=result_search">
+                    <input class="form-control mr-sm-2" type="text" name="home_search" placeholder="Tìm Kiếm"
+                           aria-label="Search">
                     <input type="submit" value="tìm kiếm">
                 </form>
-                <%--                <button type="button" class="btn btn-success">Đăng nhập</button>--%>
-                <%--                <button type="button" class="btn btn-success">Đăng ký</button>--%>
-                <%--                <a href="/sign_in?action=sign_in" style="color:black ">Đăng nhập</a>--%>
-                <%--                <a href="/sign_up?action=sign_up" style="color:black ">Đăng ký</a> để thêm phần tên của khách hàng TODO--%>
+
             </div>
         </nav>
     </div>
@@ -60,22 +58,23 @@
     <div class="row">
         <div class="col-sm-9">
             <div class="row">
-                <c:forEach items='${requestScope["list"]}' var="product">
-                    <div class="card-group col-sm-4">
-                        <div class="card">
-                            <img class="card-img-top" src="${product.getImage()}" alt="Card image cap">
-                            <div class="card-body">
-                                <form method="post" action="/User?action=show_detail&id=${product.getId()}">
-                                    <p>${product.getName()}</p><br>
-                                    <p>${product.getPrice()}</p><br>
-                                    <button type="button" class="btn btn-success">Đặt hàng</button>
-                                    <button type="submit">chi tiết</button>
-                                </form>
-                            </div>
+
+                <div class="card-group col-sm-4">
+                    <div class="card">
+                        <img class="card-img-top" src="${requestScope["product2"].getImage()}" alt="Card image cap">
+                        <div class="card-body">
+                            <p>mã sản phẩm:${requestScope["product2"].getId()}</p><br>
+                            <p>tên sản phẩm:${requestScope["product2"].getName()}</p><br>
+                            <p>giá:${requestScope["product2"].getPrice()}</p><br>
+                            <p>${requestScope["product2"].getDescription()}</p><br>
+                            <p>số lượng: ${requestScope["product2"].getAmount()} </p><br>
+                            <button type="button" class="btn btn-success">Đặt hàng</button>
                         </div>
                     </div>
-                </c:forEach>
+                </div>
+
             </div>
+
         </div>
 
         <div class="col-sm-3" id="sidebar">
@@ -95,16 +94,15 @@
                 </button>
             </div>
             <div class="list-group">
-
                 <button type="button" class="list-group-item list-group-item-action active">
                 </button>
-                <form method="get">
-                    <a href="/User?action=customer_information&&customerID=${requestScope["user2"].getId()}">thông tin
-                        tài khoản</a><br>
-                    <a href="/User?action=account&&customerID=${requestScope["user2"].getId()}"> tài khoản</a><br>
-                    <a href="/User?action=cart&&customerID=${requestScope["user2"].getId()}">giỏ hàng</a>
-                </form>
-
+                <button type="button" class="list-group-item list-group-item-action">Thông tin cá nhân
+                </button>
+                <button type="button" class="list-group-item list-group-item-action">Tài khoản
+                </button>
+                <button type="button" class="list-group-item list-group-item-action">Giỏ hàng
+                    <i class="fas fa-shopping-cart"></i>
+                </button>
             </div>
         </div>
     </div>
