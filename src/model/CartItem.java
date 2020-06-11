@@ -1,15 +1,34 @@
 package model;
 
 public class CartItem {
+    private int id;
     private Product product;
     private int quantity;
-
-    public CartItem(Product product, int quantity) {
-        this.product = product;
-        this.quantity = quantity;
+    private float price;
+    public CartItem() {
+    }
+    public int getId() {
+        return id;
     }
 
-    public CartItem() {
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public float getPrice() {
+        return price;
+    }
+
+    public void setPrice(float price) {
+        this.price = price;
+    }
+
+
+    public CartItem(int id, Product product, int quantity, float price) {
+        this.id = id;
+        this.product = product;
+        this.quantity = quantity;
+        this.price = price;
     }
 
     public Product getProduct() {

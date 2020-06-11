@@ -4,25 +4,39 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Cart {
+    private int id;
+    private User customer;
+    List<CartItem> cartItemList ;
+    private int status;
 
-    List<CartItem> cartItemList = new ArrayList<>();
-
-    public void addItem(CartItem item) {
-        for (CartItem newItem : cartItemList) {
-            int id = newItem.getProduct().getId();
-            if (id == item.getProduct().getId()) {
-                increaseQuantityByProductID(id);
-            }
-        }
+    public int getId() {
+        return id;
     }
 
-    private void increaseQuantityByProductID(int id) {
-        for (CartItem item : cartItemList) {
-            if (id == item.getProduct().getId()) {
-                item.setQuantity(item.getQuantity() + 1);
-            }
-        }
+    public void setId(int id) {
+        this.id = id;
     }
+
+    public User getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(User customer) {
+        this.customer = customer;
+    }
+
+    public void setCartItemList(List<CartItem> cartItemList) {
+        this.cartItemList = cartItemList;
+    }
+
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
+    }
+
 
     public List<CartItem> getCartItemList() {
         return this.cartItemList;

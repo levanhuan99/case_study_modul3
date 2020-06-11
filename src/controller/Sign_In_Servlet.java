@@ -53,6 +53,7 @@ public class Sign_In_Servlet extends HttpServlet {
             } else if (user.getAccount().equals(account) && user.getPassword().equals(password)&& user.getId()>1) {
                 session.setAttribute("USER_IS_LOGGINNED", true);
                 session.setAttribute("roleUser", user.getId());
+                session.setAttribute("user", user);
 
                 RequestDispatcher dispatcher = request.getRequestDispatcher("home/user_page/user_display_form.jsp");//TODO làm phần loggin của user
                 dispatcher.forward(request, response);

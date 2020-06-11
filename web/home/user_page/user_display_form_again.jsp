@@ -60,7 +60,7 @@
     <div class="row">
         <div class="col-sm-9">
             <div class="row">
-                <c:forEach items='${requestScope["list"]}' var="product">
+                <c:forEach items='${requestScope["productList"]}' var="product">
                     <div class="card-group col-sm-4">
                         <div class="card">
                             <img class="card-img-top" src="${product.getImage()}" alt="Card image cap">
@@ -99,10 +99,10 @@
                 <button type="button" class="list-group-item list-group-item-action active">
                 </button>
                 <form method="get">
-                    <a href="/User?action=customer_information&&customerID=${requestScope["user2"].getId()}">thông tin
+                    <a href="/User?action=customer_information&&customerID=${requestScope["customer2"].getId()}">thông tin
                         tài khoản</a><br>
-                    <a href="/User?action=account&&customerID=${requestScope["user2"].getId()}"> tài khoản</a><br>
-                    <a href="/CartController?action=cart&&customerID=${requestScope["user2"].getId()}">giỏ hàng</a>
+                    <a href="/User?action=account&&customerID=${requestScope["customer2"].getId()}"> tài khoản</a><br>
+                    <a href="/CartController?action=cart&&customerID=${requestScope["customer2"].getId()}">giỏ hàng</a>
                 </form>
 
             </div>
