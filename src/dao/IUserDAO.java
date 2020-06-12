@@ -15,5 +15,7 @@ public interface IUserDAO {
 
     void  updateUser(User user);
 
+    User getUserByEmail(String email);
+
 
 }

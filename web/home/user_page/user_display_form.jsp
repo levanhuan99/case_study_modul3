@@ -46,6 +46,7 @@
                 <form class="form-inline my-2 my-lg-0" method="post" action="/User?action=search">
                     <input class="form-control mr-sm-2" name="search" placeholder="Tìm Kiếm" aria-label="Search">
                     <input type="submit" value="tìm kiếm">
+                    <input type="submit" value="đăng xuất">
                 </form>
                 <%--                <button type="button" class="btn btn-success">Đăng nhập</button>--%>
                 <%--                <button type="button" class="btn btn-success">Đăng ký</button>--%>

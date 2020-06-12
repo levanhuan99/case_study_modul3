@@ -14,7 +14,7 @@
 <form method="post" action="/Password?action=get_pass">
     <table>
         <tr>
-            <td><input name="account" placeholder="nhập email"></td>
+            <td><input name="email" placeholder="nhập email"></td>
         </tr>
         <tr>
             <td><input type="submit"></td>

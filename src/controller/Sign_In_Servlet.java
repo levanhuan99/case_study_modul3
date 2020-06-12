@@ -47,7 +47,7 @@ public class Sign_In_Servlet extends HttpServlet {
             HttpSession session = request.getSession();
             Object o = session.getAttribute("USER_IS_LOGGINNED");
 
-            if (o == null) {
+
                 User user = userDAO.getUser(account);
                 request.setAttribute("user2",user);
                 if (user.getAccount().equals(account) && user.getPassword().equals(password) && user.getId() == 1) {
@@ -62,14 +62,13 @@ public class Sign_In_Servlet extends HttpServlet {
                     RequestDispatcher dispatcher = request.getRequestDispatcher("home/user_page/user_display_form.jsp");//TODO làm phần loggin của user
                     dispatcher.forward(request, response);
                 }else {
+                PrintWriter writer = response.getWriter();
+                writer.write("banj chuwa dang xuat");//TODO cần làm thêm trang thông báo phần trang khi đã đang nhập
 
                 }
             }
-            else {
-                PrintWriter writer = response.getWriter();
-                writer.write("banj chuwa dang xuat");//TODO cần làm thêm trang thông báo phần trang khi đã đang nhập
-            }
-        }
+
+
 
     }
 
