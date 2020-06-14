@@ -62,8 +62,6 @@ public class Sign_In_Servlet extends HttpServlet {
                     RequestDispatcher dispatcher = request.getRequestDispatcher("home/user_page/user_display_form.jsp");//TODO làm phần loggin của user
                     dispatcher.forward(request, response);
                 }else {
-                PrintWriter writer = response.getWriter();
-                writer.write("banj chuwa dang xuat");//TODO cần làm thêm trang thông báo phần trang khi đã đang nhập
 
                 }
             }

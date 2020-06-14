@@ -45,12 +45,10 @@ public class AdminServlet extends HttpServlet {
                 editProduct(request,response);
                 break;
 
-            default:
-                break;
         }
     }
 
-    private void editProduct(HttpServletRequest request, HttpServletResponse response) {
+    private void editProduct(HttpServletRequest request, HttpServletResponse response) throws IOException {
         int id=Integer.parseInt(request.getParameter("id"));
         String name=request.getParameter("name");
         Float price=Float.parseFloat(request.getParameter("price"));
@@ -59,12 +57,13 @@ public class AdminServlet extends HttpServlet {
         int amount=Integer.parseInt(request.getParameter("amount"));
         Product product=new Product(id,name,price,description,image,amount);
         productDAO.updateProduct(product);
-
+        PrintWriter writer=response.getWriter();
+        writer.write("bạn đã sửa thành công,trở ra và refesh lại trang");
     }
 
 
 
-    private void addProduct(HttpServletRequest request, HttpServletResponse response) {
+    private void addProduct(HttpServletRequest request, HttpServletResponse response) throws IOException {
         int id = Integer.parseInt(request.getParameter("id"));
         String name = request.getParameter("name");
         float price = Float.parseFloat(request.getParameter("price"));
@@ -73,6 +72,9 @@ public class AdminServlet extends HttpServlet {
         String image = request.getParameter("image");
         Product product = new Product(id, name, price, description, image, amount);
         productDAO.addProduct(product);
+        PrintWriter writer=response.getWriter();
+        writer.write("bạn đã thêm thành công,trở ra và refesh lại trang");
+
     }
 //
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
